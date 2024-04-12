@@ -117,7 +117,8 @@ void ModeChecks::checkAndReport(const Context &context, Report &reporter)
 		 * This check can be configured via <param>COM_ARM_MIS_REQ</param> parameter.
 		 * </profile>
 		 */
-		reporter.armingCheckFailure(mission_required_modes, health_component_t::system, events::ID("check_modes_mission"),
+		reporter.armingCheckFailure(mission_required_modes, health_component_t::system,
+					    events::ID("check_modes_mission"),
 					    events::Log::Info, "No valid mission available");
 		reporter.clearCanRunBits((NavModes)reporter.failsafeFlags().mode_req_mission);
 	}
@@ -143,10 +144,7 @@ void ModeChecks::checkAndReport(const Context &context, Report &reporter)
 	}
 
 	if (reporter.failsafeFlags().manual_control_signal_lost && reporter.failsafeFlags().mode_req_manual_control != 0) {
-
-
 		const bool rc_disabled = (_param_com_rc_in_mode.get() == 4);
-		//bool rc_disabled = false;
 		NavModes nav_modes = rc_disabled ? (NavModes)reporter.failsafeFlags().mode_req_manual_control : NavModes::None;
 		events::LogLevel log_level = rc_disabled ? events::Log::Error : events::Log::Warning;
 
@@ -157,9 +155,10 @@ void ModeChecks::checkAndReport(const Context &context, Report &reporter)
 		 * Sticks can be enabled via <param>COM_RC_IN_MODE</param> parameter.
 		 * </profile>
 		 */
-
-
-		reporter.armingCheckFailure(nav_modes,health_component_t::remote_control,events::ID("check_modes_manual_control"),log_level, "No manual control input");
+		reporter.armingCheckFailure(nav_modes,
+					    health_component_t::remote_control,
+					    events::ID("check_modes_manual_control"),
+					    log_level, "No manual control input");
 		reporter.clearArmingBits((NavModes)reporter.failsafeFlags().mode_req_manual_control);
 		reporter.clearCanRunBits((NavModes)reporter.failsafeFlags().mode_req_manual_control);
 	}

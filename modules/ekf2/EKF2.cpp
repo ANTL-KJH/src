@@ -62,7 +62,7 @@ EKF2::EKF2(bool multi_mode, const px4::wq_config_t &config, bool replay_mode):
 	_param_ekf2_imu_ctrl(_params->imu_ctrl),
 	_param_ekf2_mag_delay(_params->mag_delay_ms),
 	_param_ekf2_baro_delay(_params->baro_delay_ms),
-	_param_ekf2_gps_delay(_params->gps_delay_ms),make px4_fmu-v4_default upload
+	_param_ekf2_gps_delay(_params->gps_delay_ms),
 #if defined(CONFIG_EKF2_AUXVEL)
 	_param_ekf2_avel_delay(_params->auxvel_delay_ms),
 #endif // CONFIG_EKF2_AUXVEL

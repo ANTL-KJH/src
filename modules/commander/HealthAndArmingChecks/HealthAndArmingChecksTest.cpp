@@ -34,7 +34,7 @@
 #include <gtest/gtest.h>
 
 #include "Common.hpp"
-#include <uORB/topics/z.h>
+#include <uORB/topics/event.h>
 #include <uORB/Subscription.hpp>
 
 #include <stdint.h>
