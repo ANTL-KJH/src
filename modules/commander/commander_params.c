@@ -183,7 +183,7 @@ PARAM_DEFINE_INT32(COM_HOME_IN_AIR, 0);
  * @value 3 RC or Joystick keep first
  * @value 4 Stick input disabled
  */
-PARAM_DEFINE_INT32(COM_RC_IN_MODE, 1);
+PARAM_DEFINE_INT32(COM_RC_IN_MODE, 1);  // antl 3->1
 
 /**
  * RC input arm/disarm command duration
